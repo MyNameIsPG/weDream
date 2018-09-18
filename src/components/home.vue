@@ -10,6 +10,9 @@
         </li>
       </ul>
     </div>
+    <div class="noticeList">
+
+    </div>
 	</div>
 </template>
 
