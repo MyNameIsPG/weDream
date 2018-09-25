@@ -2,8 +2,8 @@
 * penggui
 * 2018-9-18
 */
-.home {
-  padding 0 20px
+.__tabbar1 {
+  padding 10px 20px 50px
 }
 .banner {
  position relative
@@ -28,4 +28,71 @@
   width 36px
   height 36px
   margin 0 auto 5px
+}
+
+.__noticeList {
+  margin 10px 0
+  width 100%
+  height 44px
+  position relative
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 1px 1.732px 10px 0px rgba( 0, 0, 0, 0.3 );
+  .noticeHead {
+    position absolute
+    width 47px
+    height 27px
+    left 10px
+    top 9px
+  }
+  .noticeAdd {
+    position absolute
+    width 20px
+    height 27px
+    right 10px
+    top 8px
+  }
+  a {
+    width 100%
+    height 100%
+    display block
+  }
+  .scroll-wrap {
+    height 30px
+    line-height 30px
+    overflow hidden
+    position absolute
+    left 62px
+    top 7px
+    right 40px
+    .scroll-content {
+      position: relative;
+      transition: top 0.5s
+      overflow hidden
+      li{
+        color: #666666
+        font-size: 15px
+        overflow hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+        display: block
+        height: 30px
+        color #333333
+        font-size 14px
+        span {
+          width 30px
+          height 16px
+          line-height 16px
+          text-align center
+          border-radius 8px
+          color #ff4c4c
+          border 1px solid #ff4c4c
+          font-size 12px
+          vertical-align middle
+          display inline-block
+          margin-right 10px
+        }
+      }
+    }
+  }
 }
