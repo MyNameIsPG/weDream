@@ -1,6 +1,6 @@
 <template>
-  <div class="__noticeList">
-    <router-link :to="{path:'/noticeList'}">
+  <div class="noticeList">
+    <router-link :to="{ path:'/noticeIndexList' }">
       <div class="scroll-wrap">
         <ul class="scroll-content" :style="{ top }">
           <li v-for="(item,index) in prizeList" :key="index"><span v-if="item.status==1">热门</span>{{item.title}}</li>
