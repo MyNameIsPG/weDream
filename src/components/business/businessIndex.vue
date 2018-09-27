@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     pageView(obj){
-      this.$router.push({path: '/businessIndexList', query: { name: obj } })
+      this.$router.push({path: '/businessIndexList', query: { title: obj } })
     }
   }
 }

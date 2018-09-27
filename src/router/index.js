@@ -12,6 +12,11 @@ import businessIndex from '@/components/business/businessIndex';
 import businessIndexList from '@/components/business/businessIndexList';
 import businessIndexDetails from '@/components/business/businessIndexDetails';
 
+import circleIndex from '@/components/circle/circleIndex';
+import circleIndexAdd from '@/components/circle/circleIndexAdd';
+import circleIndexDetails from '@/components/circle/circleIndexDetails';
+import circlePostIndex from '@/components/circle/circlePostIndex';
+
 const router = new Router({
 	routes: [
 		{ path: '/', name: '首页', component: index },
@@ -26,6 +31,10 @@ const router = new Router({
     { path: '/businessIndex', name: '政务咨询', component: businessIndex },
     { path: '/businessIndexList', name: '政务分类', component: businessIndexList },
     { path: '/businessIndexDetails', name: '政务分类详情', component: businessIndexDetails },
+    { path: '/circleIndex', name: '邻里圈子', component: circleIndex },
+    { path: '/circleIndexAdd', name: '发布帖子', component: circleIndexAdd },
+    { path: '/circleIndexDetails', name: '帖子详情', component: circleIndexDetails },
+    { path: '/circlePostIndex', name: '圈子管理', component: circlePostIndex },
 	]
 })
 
