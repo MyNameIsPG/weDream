@@ -627,5 +627,68 @@ html, body {
 }
 //网格详情
 .gridIndexItem {
-
+  .gridBox {
+    overflow hidden
+    background #ffffff
+    margin-bottom 10px
+    padding 10px 15px
+    .gridBox-head {
+      overflow hidden
+      h2 {
+        border-left 3px solid #ffdf4c
+        color #333333
+        font-size 16px
+        font-weight bold
+        padding-left 10px
+        height 20px
+        line-height 20px
+        span {
+          float right
+          font-weight normal
+          font-size 14px
+          color #5185eb
+        }
+      }
+    }
+  }
+}
+//文章
+.post {
+  margin-top 5px
+  li {
+    background #ffffff
+    padding 10px 0px
+    overflow hidden
+    position relative
+    border-bottom 1px solid #ccc
+    img {
+      float left
+      width 60px
+      height 60px
+      margin-right 10px
+      border-radius 4px
+    }
+    > div {
+      padding-left 70px
+      h2 {
+        color #000000
+        font-size 14px
+        font-weight bold
+        white-space nowrap
+        overflow hidden
+        text-overflow ellipsis
+      }
+      p {
+        height: 42px;
+        overflow: hidden;
+        line-height: 22px;
+        color: #999999;
+        font-size: 14px;
+        margin-top 6px
+      }
+    }
+  }
+  li:last-child {
+    border-bottom none
+  }
 }
