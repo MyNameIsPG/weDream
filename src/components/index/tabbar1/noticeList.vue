@@ -13,23 +13,34 @@
 </template>
 
 <script>
+import { query } from "src/api/notices/index";
 export default {
   name: "noticeList",
   data(){
     return {
-      prizeList: [
-        {title:'这里是社区历史公告的展示列。这里是社区历史公告的展示列。',status: '1'},
-        {title:'这里是社区历史公告的展示列表页展示列表页。',status: '0'},
-        {title:'这里是社区历史公告的展示列表页展示列。',status: '0'},
-        {title:'这里是社区历史公告的展示列表页展示列表页。',status: '0'},
-      ],
+      prizeList: [],
       activeIndex: 0,
+    }
+  },
+  methods: {
+    queryPost(){
+      let params = {
+        pageNum: 1,
+        pageSize: 5,
+        communityId: sessionStorage.getItem("communityId"),
+        type: 1
+      }
+      query(params).then(data => {
+        if (data.data.code == 200) {
+          this.prizeList = data.data.data.list
+        }
+      })
     }
   },
   computed: {
     top() {
       return - this.activeIndex * 30 + 'px';
-    }
+    },
   },
   mounted() {
     setInterval(_ => {
@@ -39,6 +50,7 @@ export default {
         this.activeIndex = 0;
       }
     }, 3000);
+    this.queryPost();
   }
 }
 </script>

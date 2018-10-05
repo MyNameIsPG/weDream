@@ -1,21 +1,45 @@
 <template>
-	<div class="noticeIndexDetails">
-    <h2>标题一</h2>
+	<div class="noticeIndexDetails" :style="'height:'+ height.height + ';background: ' + height.background">
+    <h2>{{dataList.title}}</h2>
     <div class="cler info">
-      <span class="fl">创建人：张三</span>
-      <span class="fr">创建时间：2018-7-18 10:00</span>
+      <span class="fl">创建人：{{dataList.createName}}</span>
+      <span class="fr">创建时间：{{dataList.createTime}}</span>
     </div>
-    <div class="content">
-      <img src="https://upload-images.jianshu.io/upload_images/6252616-fc3e5f484de7bdde.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="">
-      今天有幸请来王君老师讲学，两节公开课加一场主题报告。由于时间紧迫，一开始连通常例行的主持人对嘉宾的介绍环节也省去了，王君老师也是直接了当地带领学生进入教学，没有寒暄和自我介绍。加之会场是大会议室，五六十名初二学生就坐在听众席的前面几排，没有按照课堂的样子重新摆布，上课中老师到不了绝大多数学生的身边，师生课堂上的交流很受限制。所以，当两节课后王君老师宣布“下课”和与学生“再见”的时候，我突然觉得这些有幸被王君老师教了两节课的天水市逸夫中学八年级这个班的这些学生并没有最大受益，甚至糊里糊涂。他们也许来前班主任老师告诉过今天是谁给他们上课，但这位著名特级教师的特点是什么，这位名师为什么要跟他们上这样两节课，以及今天这两堂由他们与名师一同完成的公开课是要给会场上听课的人们展示和告诉什么，这些问题他们并不知晓。不仅如此，即使听课的人们，虽然对于王君及其“青春语文”如雷贯耳，但“青春语文”的特点以及这两节课的意义在哪儿，也并不都很清楚。因此，待王君老师刚宣布了“下课”和“再见”，我便半路杀出冲上前台拿起话筒叫学生先不要走，占用两分钟的时间因着前面课上王老师和学生讨论的“今天这课是不是语文课”的问题，告诉他们这两节课就是语文课，是“青春语文”课。接着，叫他们记住“青春语文”的基本“招牌”。先让记住三个词:阅读、写作和生活；然后分别在三个词前面加上修饰限定性的三个词:灵性、生命和激情；最后让他们把目前的三个短语高声齐说两边:灵性阅读，生命写作，激情生活。
-    </div>
+    <div class="content" v-html="dataList.content"></div>
   </div>
 </template>
 
 <script>
-	export default {
-		name: "noticeIndexDetails"
-	}
+import { queryOne } from "src/api/notices/index";
+export default {
+  name: "noticeIndexDetails",
+  data(){
+    return {
+      dataList: [],
+      height:{
+        height:'',
+        background: '#fff'
+      },
+    }
+  },
+  methods: {
+    queryPost(){
+      let params = {
+        uuid: this.$route.query.uuid
+      }
+      queryOne(params).then(data => {
+        if (data.data.code == 200) {
+          this.dataList = data.data.data
+        }
+      })
+    }
+  },
+  mounted(){
+    this.queryPost();
+    let h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    this.height.height = h+'px';
+  }
+}
 </script>
 
 <style scoped>

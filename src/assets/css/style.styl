@@ -6,6 +6,12 @@ html, body {
   background #f8f8f8
 }
 
+.title {
+  color #666
+  font-size 14px
+  padding 15px
+}
+
 //首页
 .tabbar1 {
   padding 10px 20px 50px
@@ -289,4 +295,337 @@ html, body {
     font-size 13px
     line-height 22px
   }
+}
+//圈子管理
+.circleIndex {
+  background #fff
+  .iconList {
+    padding-bottom 10px
+    border-bottom 10px solid #f8f8f8
+  }
+}
+.circleIndexDetails {
+  .postHead {
+    background #ffffff
+    padding 10px 15px
+    margin-bottom 10px
+    h2 {
+      color #333
+      font-weight bold
+      font-size 16px
+      margin-bottom 15px
+      line-height 22px
+    }
+    p {
+      margin 0 0 8px
+      font-size 14px
+      color #666
+      line-height 20px
+    }
+    > div {
+      img {
+        width 100%
+        height 100%
+      }
+    }
+  }
+  .postCommon {
+    padding 10px 15px
+    background #ffffff
+    h2 {
+      color #333
+      font-size 16px
+      font-weight bold
+    }
+  }
+}
+//文章列表管理
+.postList {
+  .box {
+    padding 12px 16px
+    border-bottom 1px solid #cccccc
+    .box-head {
+      overflow hidden
+      line-height 30px
+      height 30px
+      .time {
+        float right
+        color #999999
+        font-size 12px
+      }
+      .userImg {
+        width 30px
+        height 30px
+        vertical-align middle
+        margin-right 6px
+      }
+      .userName {
+        font-size 15px
+        font-weight bold
+        color #333333
+      }
+    }
+    .box-body {
+      padding 10px 0
+      .box-body-text {
+        color #333333
+        font-size 14px
+        line-height 22px
+      }
+      .box-body-img {
+        overflow hidden
+        img {
+          float left
+          width 120px
+          height 120px
+        }
+        .box-body-text {
+          padding-left 130px
+        }
+      }
+      .box-body-imgs {
+        overflow hidden
+        margin-top 5px
+        img {
+          float left
+          width 32%
+          height 120px
+          margin-right 2%
+        }
+        img:last-child {
+          margin-right 0px
+        }
+      }
+    }
+    .box-foot {
+      overflow hidden
+      .box-foot-tip {
+        float left
+        display inline-block
+        min-width 80px
+        height 24px
+        line-height 24px
+        text-align center
+        color #ff4c4c
+        border 1px solid #ff4c4c
+        border-radius 12px
+        font-size 14px
+      }
+      .box-foot-btns {
+        float right
+        > div {
+          float left
+          color #333333
+          font-size 12px
+          img {
+            width 24px
+            height 24px
+            vertical-align middle
+          }
+        }
+      }
+    }
+  }
+  .box:last-child {
+    border-bottom none
+  }
+}
+.circlePostIndex {
+  .infosBox {
+    background #ffdf4c
+    width 100%
+    color #fefefe
+    text-align center
+    padding 20px 0 30px
+    img {
+      width 57px
+      height 57px
+      margin 0 auto
+      display block
+    }
+    h2 {
+      font-size 15px
+      margin 20px 0 8px
+      color #fefefe
+    }
+    p {
+      font-size 14px
+      margin-bottom 10px
+      color #fefefe
+    }
+    a.bansA {
+      display inline-block
+      margin 0 auto
+      border 1px solid #ffffff
+      height 22px
+      line-height 22px
+      text-align center
+      border-radius 15px
+      padding 0 15px
+      font-size 12px
+      color #ffffff
+    }
+  }
+}
+//固定按钮
+.fixedBtn {
+  position fixed
+  right 15px
+  bottom 15px
+  a {
+    display inline-block
+    width 50px
+    height 50px
+    background #ff4c4c
+    border-radius 50%
+    text-align center
+    line-height 50px
+    color #ffffff
+    font-size 14px
+  }
+}
+.addBtn {
+  overflow hidden
+  padding 15px 15px
+  a {
+    display block
+    width 100%
+    height 44px
+    line-height 44px
+    text-align center
+    background #3aaff6
+    border none
+    border-radius 5px
+    color #ffffff
+    font-size 15px
+  }
+}
+//活动管理
+.activityIndex {
+  .activity-head-box {
+    background #ffffff
+    padding 15px 20px
+    overflow hidden
+    .headImg {
+      float left
+      width 60px
+      height 60px
+      border-radius 50%
+      margin-right 10px
+    }
+    .headText {
+      h2 {
+        color #000000
+        font-size 15px
+        font-weight bold
+        img {
+          vertical-align middle
+          width 15px
+          height 15px
+        }
+      }
+      p {
+        color #000000
+        font-size 14px
+      }
+    }
+  }
+}
+.activety {
+  > div {
+    border-bottom 10px solid #f8f8f8
+    padding 10px 15px
+    overflow hidden
+    img {
+      width 100%
+      height 200px
+      border-radius 10px
+      overflow hidden
+      margin-bottom 10px
+    }
+    h2 {
+      color #000000
+      font-size 15px
+      font-weight bold
+      line-height 20px
+      padding-bottom 10px
+      border-bottom 1px solid #ccc
+    }
+    p {
+      color #000000
+      font-size 12px
+      margin-top 10px
+      span {
+        font-size 14px
+      }
+    }
+    > div {
+      margin 10px 0 15px
+      color #000000
+      font-size 14px
+    }
+  }
+}
+//选项卡
+.tab {
+  background #ffffff
+  ul {
+    overflow hidden
+    display flex
+    padding 10px 15px
+    li {
+      flex 1
+      text-align center
+      color #000000
+      font-size 15px
+      font-weight bold
+      position relative
+      padding 10px 0
+    }
+    li.active:after {
+      content ''
+      width 40px
+      height 5px
+      background #ffdf4c
+      border-radius 3px
+      position absolute
+      left 50%
+      bottom 5px
+      margin-left -20px
+    }
+  }
+}
+.soltDataList {
+  height 150px
+  ul {
+    li {
+      height 45px
+      line-height 45px
+      text-align center
+      border-bottom 1px solid #ccc
+      font-size 16px
+    }
+    li:last-child {
+      border-bottom none
+    }
+    li:active{
+      background #f0f0f0
+    }
+  }
+}
+.soltDataListBtn {
+  border-top 5px solid #e0e0e0
+  > div {
+    height 45px
+    line-height 45px
+    text-align center
+    font-size 16px
+  }
+  > div:active{
+    background #f0f0f0
+  }
+}
+//网格详情
+.gridIndexItem {
+
 }
