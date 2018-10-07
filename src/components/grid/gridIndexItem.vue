@@ -1,28 +1,27 @@
 <template>
 	<div class="gridIndexItem">
-    <div class="gridBox">
-      <div class="gridBox-head"><h2>网格点概况</h2></div>
-      <div class="gridBox-body">
-
+    <div v-if="dataList.length>0">
+      <div class="gridBox" v-for="(item, index) in dataList" :key="index">
+        <div class="gridBox-head"><h2>{{item.name}} <span v-if="index!=0">更多></span></h2></div>
+        <div class="gridBox-body">
+          <div v-if="item.articlesList && item.articlesList.length>0">
+            <div v-if="index==0" class="" style="padding: 10px 0;">
+              <div v-html="item.articlesList[0].content"></div>
+            </div>
+          </div>
+          <div v-if="item.articlesList && item.articlesList.length>0">
+            <post v-if="index==1 || index==2" :data="item.articlesList"></post>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="gridBox">
-      <div class="gridBox-head"><h2>网格点动态 <span>更多></span></h2></div>
-      <div class="gridBox-body">
-        <post></post>
-      </div>
-    </div>
-    <div class="gridBox">
-      <div class="gridBox-head"><h2>网格点红黑榜 <span>更多></span></h2></div>
-      <div class="gridBox-body">
-        <post></post>
-      </div>
-    </div>
+    <div class="noData" v-else>暂无数据</div>
   </div>
 </template>
 
 <script>
-import post from '@/components/post/post';
+import post from 'src/components/post/post';
+import { classificationQueryAndArticle } from "src/api/classification/index";
 export default {
   name: "gridIndexItem",
   components: {
@@ -30,24 +29,27 @@ export default {
   },
   data(){
     return {
-      dataList: [],
-      postQueryData: [],
+      dataList: {
+        articlesList: []
+      },
     }
   },
   mounted(){
-    //this.circleQuery();
+    this.circleQuery();
   },
   methods: {
     //分页查询圈子
     circleQuery(){
       let params = {
         pageNum: 1,
-        pageSize: 7,
+        pageSize: 4,
+        type: 1,
         communityId: sessionStorage.getItem("communityId"),
+        upId: this.$route.query.uuid
       }
-      circleQuery(params).then(data => {
+      classificationQueryAndArticle(params).then(data => {
         if (data.data.code == 200) {
-          this.dataList = data.data.data.list
+          this.dataList = data.data.data
         }
       })
     },

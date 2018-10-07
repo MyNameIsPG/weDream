@@ -12,6 +12,12 @@ html, body {
   padding 15px
 }
 
+.formTextRight {
+  input {
+    text-align right
+  }
+}
+
 //首页
 .tabbar1 {
   padding 10px 20px 50px
@@ -287,13 +293,17 @@ html, body {
   h2 {
     color #333333
     font-size 16px
-    margin-bottom 5px
+    margin-bottom 10px
     font-weight 600
   }
   div {
     color #666666
     font-size 13px
     line-height 22px
+    img {
+      width 100%
+      height 100%
+    }
   }
 }
 //圈子管理
@@ -336,6 +346,40 @@ html, body {
       color #333
       font-size 16px
       font-weight bold
+    }
+    ul {
+      padding 15px 0
+      li {
+        overflow hidden
+        margin-bottom 10px
+        div:nth-child(1) {
+          float left
+          width 30px
+          height 30px
+          img {
+            width 30px
+            height 30px
+            border-radius 50%
+          }
+        }
+        div:nth-child(2) {
+          color #333333
+          font-size 15px
+          padding-left 40px
+          h3 {
+            color #333333
+            font-size 15px
+          }
+          p {
+            line-height 24px
+            color #333333
+          }
+          h4 {
+            color #999999
+            font-size 12px
+          }
+        }
+      }
     }
   }
 }
@@ -428,6 +472,28 @@ html, body {
   }
   .box:last-child {
     border-bottom none
+  }
+}
+.postCommonTip {
+  background #ffffff
+  position fixed
+  bottom 0px
+  height 45px
+  left 0px
+  width 100%
+  display flex
+  border-top 1px solid #ccc
+  > div {
+    flex 1
+    text-align center
+    color #333333
+    font-size 12px
+    line-height 45px
+    img {
+      width 24px
+      height 24px
+      vertical-align middle
+    }
   }
 }
 .circlePostIndex {
@@ -532,7 +598,7 @@ html, body {
   }
 }
 .activety {
-  > div {
+  .activetyBox {
     border-bottom 10px solid #f8f8f8
     padding 10px 15px
     overflow hidden
@@ -569,7 +635,7 @@ html, body {
 //选项卡
 .tab {
   background #ffffff
-  ul {
+  > ul {
     overflow hidden
     display flex
     padding 10px 15px
@@ -597,6 +663,7 @@ html, body {
 }
 .soltDataList {
   height 150px
+  overflow-y auto
   ul {
     li {
       height 45px
@@ -679,16 +746,45 @@ html, body {
         text-overflow ellipsis
       }
       p {
-        height: 42px;
-        overflow: hidden;
-        line-height: 22px;
-        color: #999999;
-        font-size: 14px;
+        height 42px
+        overflow hidden
+        line-height 22px
+        color #999999
+        font-size 14px
         margin-top 6px
       }
     }
   }
   li:last-child {
     border-bottom none
+  }
+}
+//暂无数据
+.noData {
+  text-align center
+  color #333
+  font-size 14px
+  padding 10px 0
+}
+//投诉建议
+.complaintIndex {
+
+}
+.complaintBtn {
+  position fixed
+  left 15px
+  right 15px
+  bottom 0px
+  height 60px
+  a {
+    display block
+    width 100%
+    height 50px
+    background #26a0f5
+    border-radius 4px
+    text-align center
+    line-height 50px
+    color #ffffff
+    font-size 16px
   }
 }

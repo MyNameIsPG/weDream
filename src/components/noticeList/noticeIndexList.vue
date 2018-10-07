@@ -1,7 +1,7 @@
 <template>
 	<div class="__businessIndexList__">
     <div class="businessIndexList">
-      <ul :style="'height:'+ height.height + ';background: ' + height.background">
+      <ul>
         <infinite-scroll class="box" @loading="loadBottom" :busy="busy" :isOk="isOk">
           <li v-if="list && list.length > 0" v-for="(item,index) in list" :key="index" @click="pageView(item.uuid)" style="font-weight: bold;">
             {{item.title}}
@@ -27,15 +27,7 @@ export default {
   data(){
     return {
       dataList: [],
-      height:{
-        height:'',
-        background: '#fff'
-      },
     }
-  },
-  mounted() {
-    let h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-    this.height.height = h+'px';
   },
   methods: {
     obtain() {

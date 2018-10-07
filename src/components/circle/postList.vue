@@ -33,8 +33,8 @@
             <span v-else>（0）</span>
           </div>
           <div class="commentUp">
-            <img src="../../assets/img/commentUp.png" alt="">
-            <span>（{{item.commentCount}}）</span>
+            <img @click="pageView(item.uuid)" src="../../assets/img/commentUp.png" alt="">
+            <span @click="pageView(item.uuid)">（{{item.commentCount}}）</span>
           </div>
         </div>
       </div>

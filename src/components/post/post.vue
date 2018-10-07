@@ -1,24 +1,11 @@
 <template>
 	<ul class="post">
-    <li>
-      <img src="../../assets/img/bg/bg1.jpg" alt="">
+    <li v-for="(item,index) in data" :key="index" @click="pageView(item.uuid)">
+      <img v-if="item.pic" :src="item.pic.split(',')[0]" alt="">
+      <img v-else src="../../assets/img/no.png" alt="">
       <div class="">
-        <h2>融雪除病为民解困，携手共创和谐社会</h2>
-        <p>2018年2月5日下午，湘湖管理局跃进湖社区为芙蓉区消防大队湘湖中队和长沙</p>
-      </div>
-    </li>
-    <li>
-      <img src="../../assets/img/bg/bg1.jpg" alt="">
-      <div class="">
-        <h2>融雪除病为民解困，携手共创和谐社会</h2>
-        <p>2018年2月5日下午，湘湖管理局跃进湖社区为芙蓉区消防大队湘湖中队和长沙</p>
-      </div>
-    </li>
-    <li>
-      <img src="../../assets/img/bg/bg1.jpg" alt="">
-      <div class="">
-        <h2>融雪除病为民解困，携手共创和谐社会</h2>
-        <p>2018年2月5日下午，湘湖管理局跃进湖社区为芙蓉区消防大队湘湖中队和长沙</p>
+        <h2>{{item.title}}</h2>
+        <p>{{item.description}}</p>
       </div>
     </li>
   </ul>
@@ -26,7 +13,13 @@
 
 <script>
 export default {
-  name: "post"
+  name: "post",
+  props: [ 'data' ],
+  methods: {
+    pageView(obj){
+      this.$router.push({path: '/postDetails', query: { uuid: obj } })
+    }
+  }
 }
 </script>
 

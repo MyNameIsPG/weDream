@@ -56,6 +56,7 @@ export default {
             setTimeout(() => {
               sessionStorage.setItem("userData", JSON.stringify(response.data.data));
               sessionStorage.setItem("communityId", response.data.data.communityId);
+              sessionStorage.setItem("createId", response.data.data.uuid);
               this.$router.push({ path: '/index' });
             }, 1000);
           }

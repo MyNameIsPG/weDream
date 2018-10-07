@@ -1,14 +1,18 @@
 <template>
-  <div class="businessIndexDetails">
+  <div class="noticeIndexDetails">
     <h2>{{dataList.title}}</h2>
-    <div v-html="dataList.content"></div>
+    <div class="cler info">
+      <span class="fl">创建人：{{dataList.createName}}</span>
+      <span class="fr">创建时间：{{dataList.createTime}}</span>
+    </div>
+    <div class="content" v-html="dataList.content"></div>
   </div>
 </template>
 
 <script>
   import { articlesQuertOne } from "src/api/classification/index";
   export default {
-    name: "businessIndexDetails",
+    name: "noticeIndexDetails",
     data(){
       return {
         dataList: [],

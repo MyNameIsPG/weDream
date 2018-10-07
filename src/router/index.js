@@ -25,8 +25,18 @@ import circleIndexAddType from '@/components/circle/circleIndexAddType';
 import circleIndexDetails from '@/components/circle/circleIndexDetails';
 import circlePostIndex from '@/components/circle/circlePostIndex';
 
+
+import complaintIndex from '@/components/complaint/complaintIndex';
+import complaintMyIndex from '@/components/complaint/complaintMyIndex';
+import complaintDetails from '@/components/complaint/complaintDetails';
+import complaintAdd from '@/components/complaint/complaintAdd';
+
+
 import gridIndex from '@/components/grid/gridIndex';
 import gridIndexItem from '@/components/grid/gridIndexItem';
+
+
+import postDetails from '@/components/post/postDetails';
 
 const router = new Router({
 	routes: [
@@ -56,6 +66,12 @@ const router = new Router({
     { path: '/circlePostIndex', name: '圈子管理', component: circlePostIndex },
     { path: '/gridIndex', name: '社区网格', component: gridIndex },
     { path: '/gridIndexItem', name: '网格详情', component: gridIndexItem },
+    { path: '/postDetails', name: '文章详情', component: postDetails },
+
+    { path: '/complaintIndex', name: '社区信箱', component: complaintIndex },
+    { path: '/complaintMyIndex', name: '我的建议投诉', component: complaintMyIndex },
+    { path: '/complaintDetails', name: '投诉详情', component: complaintDetails },
+    { path: '/complaintAdd', name: '建议投诉', component: complaintAdd },
 	]
 })
 

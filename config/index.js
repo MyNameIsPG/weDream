@@ -12,7 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/backen/': {
-        target: 'http://192.168.199.231:8090/',
+        //target: 'http://192.168.199.231:8090/',
+        target: 'https://www.xxsghp.cn/',
         changeOrigin: true
       },
     },
@@ -47,7 +48,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '',
 
     /**
      * Source Maps

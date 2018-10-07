@@ -57,3 +57,21 @@ export function postThumb(params) {
     })
   })
 }
+
+/*发布评论*/
+export function circlePostCommentAdd(params) {
+  return new Promise((resolve, reject) => {
+    axiosToken.post(backen + 'circlePostComment/add', params).then(data => {
+      resolve(data)
+    })
+  })
+}
+
+/*查询评论列表*/
+export function circlePostCommentQueryAll(params) {
+  return new Promise((resolve, reject) => {
+    axiosToken.post(backen + 'circlePostComment/queryAll', params).then(data => {
+      resolve(data)
+    })
+  })
+}
