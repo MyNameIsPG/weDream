@@ -1,6 +1,7 @@
 <template>
   <div class="postList">
     <div class="box" v-for="(item,index) in dataList" :key="index" style="background: #ffffff; margin-top: 10px;">
+      <img class="replyImg" v-if="item.status==2" src="../../assets/img/reply.png" alt="">
       <div class="box-head" @click="pageView(item.uuid)">
         <span class="time">{{friendlyTimeFormat(item.createTime)}}</span>
         <img v-if="item.headpic" class="userImg" :src="item.headpic" alt="">

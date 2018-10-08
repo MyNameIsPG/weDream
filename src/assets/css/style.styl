@@ -385,9 +385,17 @@ html, body {
 }
 //文章列表管理
 .postList {
+  .replyImg {
+    position absolute
+    right 20px
+    top 15px
+    width 60px
+    height 50px
+  }
   .box {
     padding 12px 16px
     border-bottom 1px solid #cccccc
+    position relative
     .box-head {
       overflow hidden
       line-height 30px
@@ -768,7 +776,7 @@ html, body {
 }
 //投诉建议
 .complaintIndex {
-
+  padding-bottom 50px
 }
 .complaintBtn {
   position fixed
@@ -776,6 +784,7 @@ html, body {
   right 15px
   bottom 0px
   height 60px
+  background #fff
   a {
     display block
     width 100%
@@ -786,5 +795,37 @@ html, body {
     line-height 50px
     color #ffffff
     font-size 16px
+  }
+}
+.complaintDetailsReply {
+  background #ffffff
+  margin-top 10px
+  padding 10px 15px
+  div {
+    margin-bottom 10px
+    border-bottom 1px dashed #ccc
+    padding-bottom 10px
+  }
+  div:last-child {
+    border-bottom none
+    padding-bottom 0px
+  }
+  h2 {
+    color #333333
+    font-size 16px
+    padding 5px 0 10px
+    border-bottom 1px solid #ccc
+    font-weight bold
+    span {
+      float right
+      color #999999
+      font-size 12px
+    }
+  }
+  p {
+    color #333333
+    font-size 14px
+    line-height 20px
+    margin-top 10px
   }
 }

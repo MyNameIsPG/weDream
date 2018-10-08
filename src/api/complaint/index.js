@@ -30,3 +30,13 @@ export function complaintAdd(params) {
     })
   })
 }
+
+
+/*回复*/
+export function complaintCommentQueryAll(params) {
+  return new Promise((resolve, reject) => {
+    axiosToken.post(backen + 'complaintComment/queryAll', params).then(data => {
+      resolve(data)
+    })
+  })
+}
