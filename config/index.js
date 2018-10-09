@@ -12,8 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/backen/': {
-        //target: 'http://192.168.199.231:8090/',
-        target: 'https://www.xxsghp.cn/',
+        target: 'http://192.168.199.231:8090/',
+        //target: 'https://www.xxsghp.cn/',
         changeOrigin: true
       },
     },
