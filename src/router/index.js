@@ -2,41 +2,41 @@ import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
 
-import login from '@/components/login';
-import signIn from '@/components/login/signIn';
-import register from '@/components/login/register';
+import login from 'src/components/login';
+import signIn from 'src/components/login/signIn';
+import register from 'src/components/login/register';
 
-import index from '@/components/home';
-import tabbar1 from '@/components/index/tabbar1';
-import tabbar2 from '@/components/index/tabbar2';
-import tabbar3 from '@/components/index/tabbar3';
-import noticeIndexList from '@/components/noticeList/noticeIndexList';
-import noticeIndexDetails from '@/components/noticeList/noticeIndexDetails';
-import businessIndex from '@/components/business/businessIndex';
-import businessIndexList from '@/components/business/businessIndexList';
-import businessIndexDetails from '@/components/business/businessIndexDetails';
+import index from 'src/components/home';
+import tabbar1 from 'src/components/index/tabbar1';
+import tabbar2 from 'src/components/index/tabbar2';
+import tabbar3 from 'src/components/index/tabbar3';
+import noticeIndexList from 'src/components/noticeList/noticeIndexList';
+import noticeIndexDetails from 'src/components/noticeList/noticeIndexDetails';
+import businessIndex from 'src/components/business/businessIndex';
+import businessIndexList from 'src/components/business/businessIndexList';
+import businessIndexDetails from 'src/components/business/businessIndexDetails';
 
-import activityIndex from '@/components/activity/activityIndex';
-import activityIndexDetails from '@/components/activity/activityIndexDetails';
+import activityIndex from 'src/components/activity/activityIndex';
+import activityIndexDetails from 'src/components/activity/activityIndexDetails';
 
-import circleIndex from '@/components/circle/circleIndex';
-import circleIndexAdd from '@/components/circle/circleIndexAdd';
-import circleIndexAddType from '@/components/circle/circleIndexAddType';
-import circleIndexDetails from '@/components/circle/circleIndexDetails';
-import circlePostIndex from '@/components/circle/circlePostIndex';
+import circleIndex from 'src/components/circle/circleIndex';
+import circleIndexAdd from 'src/components/circle/circleIndexAdd';
+import circleIndexAddType from 'src/components/circle/circleIndexAddType';
+import circleIndexDetails from 'src/components/circle/circleIndexDetails';
+import circlePostIndex from 'src/components/circle/circlePostIndex';
 
+import complaintIndex from 'src/components/complaint/complaintIndex';
+import complaintMyIndex from 'src/components/complaint/complaintMyIndex';
+import complaintDetails from 'src/components/complaint/complaintDetails';
+import complaintAdd from 'src/components/complaint/complaintAdd';
 
-import complaintIndex from '@/components/complaint/complaintIndex';
-import complaintMyIndex from '@/components/complaint/complaintMyIndex';
-import complaintDetails from '@/components/complaint/complaintDetails';
-import complaintAdd from '@/components/complaint/complaintAdd';
+import gridIndex from 'src/components/grid/gridIndex';
+import gridIndexItem from 'src/components/grid/gridIndexItem';
 
+import postDetails from 'src/components/post/postDetails';
 
-import gridIndex from '@/components/grid/gridIndex';
-import gridIndexItem from '@/components/grid/gridIndexItem';
-
-
-import postDetails from '@/components/post/postDetails';
+import merchantIndex from 'src/components/merchant/merchantIndex';
+import merchantIndexDetails from 'src/components/merchant/merchantIndexDetails';
 
 const router = new Router({
 	routes: [
@@ -67,11 +67,12 @@ const router = new Router({
     { path: '/gridIndex', name: '社区网格', component: gridIndex },
     { path: '/gridIndexItem', name: '网格详情', component: gridIndexItem },
     { path: '/postDetails', name: '文章详情', component: postDetails },
-
     { path: '/complaintIndex', name: '社区信箱', component: complaintIndex },
     { path: '/complaintMyIndex', name: '我的建议投诉', component: complaintMyIndex },
     { path: '/complaintDetails', name: '投诉详情', component: complaintDetails },
     { path: '/complaintAdd', name: '建议投诉', component: complaintAdd },
+    { path: '/merchantIndex', name: '社区直达', component: merchantIndex },
+    { path: '/merchantIndexDetails', name: '社区直达', component: merchantIndexDetails },
 	]
 })
 

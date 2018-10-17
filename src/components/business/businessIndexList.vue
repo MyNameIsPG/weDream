@@ -27,7 +27,8 @@ export default {
     circleQuery(){
       let params = {
         classify: this.$route.query.uuid,
-        type: 3
+        type: 3,
+        communityId: sessionStorage.getItem("communityId"),
       }
       articlesQueryAll(params).then(data => {
         if (data.data.code == 200) {

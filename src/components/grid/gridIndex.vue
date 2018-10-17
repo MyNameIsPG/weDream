@@ -26,6 +26,7 @@ export default {
     circleQuery(){
       let params = {
         type: 1,
+        communityId: sessionStorage.getItem("communityId"),
       }
       classificationQueryAll(params).then(data => {
         if (data.data.code == 200) {

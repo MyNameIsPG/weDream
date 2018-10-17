@@ -57,6 +57,7 @@ export default {
       let params = {
         pageNum: 1,
         pageSize: 100,
+        communityId: sessionStorage.getItem("communityId"),
       }
       query(params).then(data => {
         if (data.data.code == 200) {
@@ -69,6 +70,7 @@ export default {
       let params = {
         pageNum: 1,
         pageSize: 100,
+        communityId: sessionStorage.getItem("communityId"),
       }
       queryMyAct(params).then(data => {
         if (data.data.code == 200) {
