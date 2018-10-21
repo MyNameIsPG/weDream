@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { query } from "src/api/notices/index";
+import { noticesQuery } from "src/api/notices/index";
 import friendlyTimeFormat from 'src/util/timeUtils'
 import infiniteScroll from 'src/components/base/infiniteScroll';
 import infiniteScrollMix from 'src/components/base/infiniteScrollMix';
@@ -32,7 +32,7 @@ export default {
   methods: {
     obtain() {
       return new Promise((resolve, reject) => {
-        query({
+        noticesQuery({
           communityId: sessionStorage.getItem("communityId"),
           type: 1,
           pageSize: this.pageSize,

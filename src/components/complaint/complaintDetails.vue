@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="complaintDetailsReply">
+    <div class="complaintDetailsReply" v-if="commentDataList.length>0">
       <h2>回复内容</h2>
       <div>
         <p style="text-align: right; color: #888; margin: 10px 0 5px;">2018-7-18 10:00</p>

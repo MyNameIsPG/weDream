@@ -9,7 +9,6 @@ let options = {
 
     // 对 data 进行任意转换处理
     return Qs.stringify(data, { arrayFormat: 'brackets' })
-    debugger
   }],
   paramsSerializer: function(params) {
     return Qs.stringify(params, { arrayFormat: 'brackets' })

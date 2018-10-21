@@ -13,12 +13,12 @@
         </li>
       </ul>
     </div>
-    <noticeList></noticeList>
+    <noticeList :prizeList="prizeList"></noticeList>
     <div class="homeList">
       <h2 class="homeListTitle">活动直通车</h2>
       <ul>
         <li v-for="(item,index) in activityData" :key="index">
-          <a href="javascript:void(0);">
+          <router-link :to="{path: '/activityIndexDetails', query: { uuid: item.uuid }}">
             <div class="homeListImg">
               <img v-if="item.coverpicList && item.coverpicList>0" :src="item.coverpicList[0]" alt="">
               <img v-else src="../../assets/img/banner.png" alt="">
@@ -32,7 +32,7 @@
                 <img src="../../assets/img/other/otherView.png" alt="">{{friendlyTimeFormat(item.createTime)}}
               </div>
             </div>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -66,7 +66,9 @@ import { Indicator } from 'mint-ui';
 import noticeList from 'src/components/index/tabbar1/noticeList';
 import { articlesQueryAll } from "src/api/classification/index";
 import { query } from "src/api/activity/index";
-import friendlyTimeFormat from 'src/util/timeUtils'
+import { gzhLogin } from "src/api/login/index";
+import { noticesQuery } from "src/api/notices/index";
+import friendlyTimeFormat from 'src/util/timeUtils';
 export default {
   name: "tabbar1",
   components: {
@@ -84,19 +86,55 @@ export default {
         { url: require('../../assets/img/index/icon7.png'), name: '社区网格', link: '/gridIndex' },
         { url: require('../../assets/img/index/icon8.png'), name: '社区直达', link: '/merchantIndex' },
       ],
-      articlesList: {
-        pic: ''
-      },
-      activityData: {
-
-      }
+      articlesList: {},
+      activityData: {},
+      prizeList: {}
     }
   },
   mounted(){
+    /*Indicator.open({
+      text: '加载中...',
+      spinnerType: 'fading-circle'
+    });*/
+    if(this.GetRequest().code){
+      let params = {
+        appid: this.GetRequest().appid,
+        openid: this.GetRequest().openid
+      }
+      gzhLogin(params).then(data => {
+        if (data.data.code == 200) {
+          sessionStorage.setItem("appId", data.data.data.appId);
+          sessionStorage.setItem("openId", data.data.data.openId);
+          sessionStorage.setItem("sessionId", data.data.data.sessionId);
+          sessionStorage.setItem("uuid", data.data.data.uuid);
+          sessionStorage.setItem("isRealName", data.data.data.isRealName);
+          sessionStorage.setItem("communityId", data.data.data.communityId);
+          this.circleQuery();
+          this.queryPost();
+          Indicator.close();
+        }
+      })
+    }
+
+
     this.circleQuery();
     this.queryPost();
+    this.queryNoticesPost();
   },
   methods: {
+    GetRequest() {
+      let url = location.href;
+      let theRequest = new Object();
+      if(url.indexOf("?") != -1) {
+        let str = url.substr(1);
+        let strs = str.split("?")[1];
+        let strs1 = strs.split("&");
+        for(let i = 0; i < strs1.length; i++) {
+          theRequest[strs1[i].split("=")[0]] = unescape(strs1[i].split("=")[1]);
+        }
+      }
+      return theRequest;
+    },
     pageView(obj){
       if(obj!=''){
         this.$router.push({path: obj})
@@ -129,9 +167,25 @@ export default {
         }
       })
     },
+    //分页查询公告
+    queryNoticesPost(){
+      let params = {
+        pageNum: 1,
+        pageSize: 5,
+        communityId: sessionStorage.getItem("communityId"),
+        type: 1
+      }
+      noticesQuery(params).then(data => {
+        if (data.data.code == 200) {
+          this.prizeList = data.data.data.list
+        }
+      })
+    },
     friendlyTimeFormat(time) {
-      let d = new Date(time.replace(new RegExp(/-/gm), "/"))
-      return friendlyTimeFormat(d)
+      if(time){
+        let d = new Date(time.replace(new RegExp(/-/gm), "/"))
+        return friendlyTimeFormat(d)
+      }
     },
   }
 }

@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { Indicator } from 'mint-ui';
 import axiosToken from '@/util/axiosToken'
 import axiosTokenGet from '@/util/axiosTokenGet'
 import mutipartAxios from '@/util/mutipartAxios'
@@ -15,15 +16,41 @@ export default {
 
     }
   },
+  mounted(){
+
+  },
   created() {
     //普通校验
     axiosToken.interceptors.response.use((respone) => {
-      var _this = this;
+      let _this = this;
       let source = respone.data;
-      if(source.code!=200){
-        MessageBox.alert(source.msg, '温馨提示').then(action => {
-
-        });
+      if(source.code==2004){
+        this.$messagebox({
+          title: '温馨提示',
+          message: '请先登录该平台？',
+          showCancelButton: true,
+          confirmButtonText:"去登录",
+          cancelButtonText:"再浏览下"
+        }).then(action => {
+          if(action == 'confirm'){
+            _this.$router.push({ path:'/login'})
+          }else{
+            console.log('否')
+          }
+        })
+      }else if(source.code!=200){
+        this.$messagebox({
+          title: '温馨提示',
+          message: source.msg,
+          showCancelButton: true,
+          confirmButtonText:"确认",
+        }).then(action => {
+          if(action == 'confirm'){
+            _this.$router.push({ path:'/login'})
+          }else{
+            console.log('否')
+          }
+        })
       }
       return respone
     }, err => {

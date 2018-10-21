@@ -33,6 +33,7 @@ import complaintAdd from 'src/components/complaint/complaintAdd';
 import gridIndex from 'src/components/grid/gridIndex';
 import gridIndexItem from 'src/components/grid/gridIndexItem';
 
+import postAll from 'src/components/post/postAll';
 import postDetails from 'src/components/post/postDetails';
 
 import merchantIndex from 'src/components/merchant/merchantIndex';
@@ -45,7 +46,9 @@ const router = new Router({
       { path: 'register', component: register, meta: { title: '注册' } },
       { path: '/login', redirect: 'signIn', meta: { title: '登录' } }
     ]},
-		{ path: '/', name: '首页', component: index },
+		{ path: '/', name: '首页', component: index, children: [
+        { path: '', redirect: '/index/tabbar1' },
+      ]},
     { path: '/index', name: '首页', component: index, children: [
       { path: 'tabbar1', name: '首页', component: tabbar1 },
       { path: 'tabbar2', name: '积分实惠', component: tabbar2 },
@@ -66,6 +69,7 @@ const router = new Router({
     { path: '/circlePostIndex', name: '圈子管理', component: circlePostIndex },
     { path: '/gridIndex', name: '社区网格', component: gridIndex },
     { path: '/gridIndexItem', name: '网格详情', component: gridIndexItem },
+    { path: '/postAll', name: '文章列表', component: postAll },
     { path: '/postDetails', name: '文章详情', component: postDetails },
     { path: '/complaintIndex', name: '社区信箱', component: complaintIndex },
     { path: '/complaintMyIndex', name: '我的建议投诉', component: complaintMyIndex },

@@ -334,7 +334,7 @@ html, body {
       border-bottom 1px solid #cccccc
       position relative
       color #333333
-      font-size 13px
+      font-size 14px
       padding 15px 15px 15px 0
       overflow hidden
       white-space nowrap
@@ -356,8 +356,8 @@ html, body {
   padding 10px 15px
   h2 {
     color #333333
-    font-size 16px
-    margin-bottom 10px
+    font-size 18px
+    margin 20px 0
     font-weight 600
   }
   div {
@@ -704,6 +704,28 @@ html, body {
     }
   }
 }
+.fixedBottomBtn {
+  width 100%
+  height 44px
+  line-height 44px
+  position fixed
+  left 0px
+  bottom 0px
+  background #fff
+  display flex
+  text-align center
+  a {
+    flex 1
+    font-size 14px
+    span {
+      font-size 20px
+      color #5185eb
+    }
+  }
+  a:nth-child(1) {
+    color #000000
+  }
+}
 //选项卡
 .tab {
   background #ffffff
@@ -891,5 +913,62 @@ html, body {
     font-size 14px
     line-height 20px
     margin-top 10px
+  }
+}
+/*商家信息*/
+.merchantIndexList {
+  > div {
+    margin-top 10px
+  }
+  .merchantIndexListBox {
+    padding 10px 15px
+    border-bottom 1px solid #ccc
+    overflow hidden
+    background #ffffff
+    > img {
+      width 80px
+      height 80px
+      float left
+    }
+    .merchantIndexListBoxText {
+      padding-left 90px
+      position relative
+      height 80px
+      h2 {
+        color #333333
+        font-size 15px
+        font-weight 600
+        margin 10px 0 10px
+        span {
+          color #ff4c4c
+          font-size 12px
+          padding 4px 7px
+          display inline-block
+          border 1px solid #ff4c4c
+          border-radius 10px
+          margin-right 4px
+        }
+        span:last-child {
+          margin-right 10px
+        }
+      }
+      > div {
+        color #333333
+        font-size 14px
+        img {
+          vertical-align middle
+          width 18px
+          margin-top -2px
+          margin-right 5px
+        }
+      }
+      .phone {
+        position absolute
+        right 0px
+        bottom 10px
+        width 50px
+        height 50px
+      }
+    }
   }
 }

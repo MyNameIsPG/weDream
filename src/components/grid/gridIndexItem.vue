@@ -2,7 +2,7 @@
 	<div class="gridIndexItem">
     <div v-if="dataList.length>0">
       <div class="gridBox" v-for="(item, index) in dataList" :key="index">
-        <div class="gridBox-head"><h2>{{item.name}} <span v-if="index!=0">更多></span></h2></div>
+        <div class="gridBox-head"><h2>{{item.name}} <span v-if="index!=0" @click="pageAll(item.uuid,item.name)">更多></span></h2></div>
         <div class="gridBox-body">
           <div v-if="item.articlesList && item.articlesList.length>0">
             <div v-if="index==0" class="" style="padding: 10px 0;">
@@ -53,6 +53,9 @@ export default {
         }
       })
     },
+    pageAll(obj,title){
+      this.$router.push({ path: "/postAll", query: {uuid: obj, title: title}})
+    }
   }
 }
 </script>

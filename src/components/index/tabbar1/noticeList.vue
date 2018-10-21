@@ -13,28 +13,12 @@
 </template>
 
 <script>
-import { query } from "src/api/notices/index";
 export default {
   name: "noticeList",
+  props: ["prizeList"],
   data(){
     return {
-      prizeList: [],
       activeIndex: 0,
-    }
-  },
-  methods: {
-    queryPost(){
-      let params = {
-        pageNum: 1,
-        pageSize: 5,
-        communityId: sessionStorage.getItem("communityId"),
-        type: 1
-      }
-      query(params).then(data => {
-        if (data.data.code == 200) {
-          this.prizeList = data.data.data.list
-        }
-      })
     }
   },
   computed: {
@@ -50,7 +34,6 @@ export default {
         this.activeIndex = 0;
       }
     }, 3000);
-    this.queryPost();
   }
 }
 </script>

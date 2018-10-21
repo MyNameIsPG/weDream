@@ -1,5 +1,6 @@
 import { backen } from '@/path/path'
 import axiosToken from '@/util/axiosToken'
+import axiosTokenGet from 'src/util/axiosTokenGet'
 
 
 /*查询活动*/
@@ -15,7 +16,7 @@ export function query(params) {
 /*查询单个活动*/
 export function queryOne(params) {
   return new Promise((resolve, reject) => {
-    axiosToken.post(backen + 'app/queryOneActs', params).then(data => {
+    axiosToken.post(backen + 'activity/queryOne', params).then(data => {
       resolve(data)
     })
   })
@@ -35,7 +36,16 @@ export function queryMyAct(params) {
 /*报名活动*/
 export function joinAct(params) {
   return new Promise((resolve, reject) => {
-    axiosToken.post(backen + 'app/joinAct', params).then(data => {
+    axiosTokenGet.get(backen + 'app/joinAct', {params: params}).then(data => {
+      resolve(data)
+    })
+  })
+}
+
+/*报名人员*/
+export function queryActPeople(params) {
+  return new Promise((resolve, reject) => {
+    axiosToken.post(backen + 'app/queryActPeople', params).then(data => {
       resolve(data)
     })
   })
