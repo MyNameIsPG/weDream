@@ -39,6 +39,9 @@ import postDetails from 'src/components/post/postDetails';
 import merchantIndex from 'src/components/merchant/merchantIndex';
 import merchantIndexDetails from 'src/components/merchant/merchantIndexDetails';
 
+import partyIndex from 'src/components/party/partyIndex';
+import partyIndexCore from 'src/components/party/partyIndexCore';
+
 const router = new Router({
 	routes: [
     { path: '/login', name: '登陆', component: login, children: [
@@ -77,6 +80,12 @@ const router = new Router({
     { path: '/complaintAdd', name: '建议投诉', component: complaintAdd },
     { path: '/merchantIndex', name: '社区直达', component: merchantIndex },
     { path: '/merchantIndexDetails', name: '社区直达', component: merchantIndexDetails },
+    { path: '/partyIndex', name: '社区党建', component: partyIndex },
+    { path: '/partyIndexCore', name: '党员之家', component: partyIndexCore },
+
+
+
+
 	]
 })
 

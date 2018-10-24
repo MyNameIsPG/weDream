@@ -77,7 +77,7 @@ export default {
   data(){
     return {
       dataList: [
-        { url: require('../../assets/img/index/icon1.png'), name: '社区党建', link: '' },
+        { url: require('../../assets/img/index/icon1.png'), name: '社区党建', link: '/partyIndex' },
         { url: require('../../assets/img/index/icon2.png'), name: '政务咨询', link: '/businessIndex' },
         { url: require('../../assets/img/index/icon3.png'), name: '活动中心', link: '/activityIndex' },
         { url: require('../../assets/img/index/icon4.png'), name: '便捷服务', link: '' },

@@ -42,7 +42,8 @@ export default {
   },
   methods: {
     pageView(obj){
-      this.$router.push({path: '/businessIndexDetails', query: { title: obj } })
+      alert("正在建设")
+      //this.$router.push({path: '/businessIndexDetails', query: { title: obj } })
     }
   }
 }

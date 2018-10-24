@@ -29,7 +29,7 @@
                 <p>兑换详情</p>
                 <p>有效期至：<span>2018-08-20</span></p>
               </div>
-              <span>兑换</span>
+              <span @click="addThis()">领取</span>
             </li>
           </ul>
         </div>
@@ -41,6 +41,7 @@
 <script>
 import { classificationQueryAll } from "src/api/classification/index";
 import { merchantQueryAll } from "src/api/merchant/index";
+import { Toast } from 'mint-ui';
 export default {
   name: "merchantIndex",
   data(){
@@ -79,6 +80,24 @@ export default {
     },
     pageView(obj){
       this.$router.push({path: '/merchantIndexDetails', query: { uuid: obj } })
+    },
+    addThis(){
+      this.$messagebox({
+        title: '温馨提示',
+        message: '是否领取该优惠券？',
+        showCancelButton: true,
+        confirmButtonText:"是",
+        cancelButtonText:"否"
+      }).then(action => {
+        if(action == 'confirm'){
+          let instance = Toast('领取成功。');
+          setTimeout(() => {
+            instance.close();
+          }, 2000);
+        }else{
+          console.log('否')
+        }
+      })
     }
   }
 }
