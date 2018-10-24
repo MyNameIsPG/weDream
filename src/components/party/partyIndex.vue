@@ -1,5 +1,6 @@
 <template>
 	<div class="partyIndex">
+    <img src="../../assets/img/dangjian/bg.png" style="width: 100%; height: 100%;" />
     <div class="list">
       <div @click="$router.push({path:'/partyIndexCore'});">
         <a href="javascript:void(0);">
