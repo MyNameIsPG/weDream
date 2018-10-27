@@ -3,7 +3,8 @@ import Qs from 'qs'
 
 let options = {
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+    "access-token": sessionStorage.getItem("tooken"),
   },
   transformRequest: [function(data) {
 

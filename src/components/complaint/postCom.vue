@@ -26,8 +26,10 @@
         this.$router.push({path: '/complaintDetails', query: {uuid: obj}})
       },
       friendlyTimeFormat(time) {
-        let d = new Date(time.replace(new RegExp(/-/gm), "/"))
-        return friendlyTimeFormat(d)
+        if(time){
+          let d = new Date(time.replace(new RegExp(/-/gm), "/"))
+          return friendlyTimeFormat(d)
+        }
       },
     }
 	}

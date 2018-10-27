@@ -23,16 +23,16 @@ html, body {
   padding 10px 20px 50px
   background #fff
 }
+.homeListTitle {
+  color #333333
+  font-size 17px
+  border-left 4px solid #ffdf4c
+  padding-left 10px
+  font-weight 600
+  margin 15px 0 10px
+}
 .homeList {
   margin-bottom 15px
-  .homeListTitle {
-    color #333333
-    font-size 17px
-    border-left 4px solid #ffdf4c
-    padding-left 10px
-    font-weight 600
-    margin 15px 0 10px
-  }
   ul {
     li {
       padding 10px
@@ -131,7 +131,9 @@ html, body {
 }
 //首页广告图
 .banner {
+ height 200px
  position relative
+ margin-bottom 5px
  img {
    width 100%
    height 100%
@@ -275,23 +277,43 @@ html, body {
 //公告详情
 .noticeIndexDetails {
   padding 10px 15px;
+  background #fff
   h2 {
     color #333333
     font-size 16px
     font-weight bold
+    padding 20px 0 15px
+    text-align center
   }
   .info {
     font-size 13px
     color #999999
     margin 10px 0
+    padding-bottom 15px
   }
   .content {
     color #666666
     font-size 14px
     line-height 22px
+    max-width: 100%!important;
+    box-sizing: border-box!important;
+    -webkit-box-sizing: border-box!important;
+    word-wrap: break-word!important;
+    word-break: normal!important;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    overflow: hidden;
+    * {
+      width 100% !important
+      height 100% !important
+      max-width: 100% !important
+    }
     img {
       width 100% !important
       height 100% !important
+      max-width: 100% !important
       margin-bottom 5px
     }
   }
@@ -487,16 +509,19 @@ html, body {
         color #333333
         font-size 14px
         line-height 22px
+        max-height: 40px;
+        overflow: hidden;
       }
       .box-body-img {
         overflow hidden
         img {
           float left
-          width 120px
-          height 120px
+          width 90px
+          height 90px
         }
         .box-body-text {
-          padding-left 130px
+          padding-left 10px
+          height 89px
         }
       }
       .box-body-imgs {

@@ -1,17 +1,10 @@
 <template>
 	<div class="activityIndex">
-    <!--<div class="activity-head-box">
-      <img class="headImg" src="../../assets/img/userImg.png" alt="">
-      <div class="headText">
-        <h2>姓名 <img src="../../assets/img/sex_men.png" alt=""></h2>
-        <p>积分：0</p>
-      </div>
-    </div>-->
     <div class="tab">
       <ul>
-        <li @click="optionBtn(1)" :class="{ 'active' : 1 == activeIndex}">活动列表</li>
-        <li @click="optionBtn(2)" :class="{ 'active' : 2 == activeIndex}">活动风采</li>
-        <li @click="optionBtn(3)" :class="{ 'active' : 3 == activeIndex}">我的参与</li>
+        <li @click="optionBtn(1)" :class="{ 'active' : 1 == activeIndex}">组织动态</li>
+        <li @click="optionBtn(2)" :class="{ 'active' : 2 == activeIndex}">红色风采</li>
+        <li @click="optionBtn(3)" :class="{ 'active' : 3 == activeIndex}">我的导航</li>
       </ul>
       <div>
         <activity v-if="activeIndex==1||activeIndex==3" :dataList="dataList"></activity>

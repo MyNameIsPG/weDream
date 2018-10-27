@@ -22,3 +22,13 @@ export function gzhLogin(params) {
     })
   })
 }
+
+
+/*获取用户信息*/
+export function getUser(params) {
+  return new Promise((resolve, reject) => {
+    axiosTokenGet.get(backen + 'wx/getUser', {params: params}).then(data => {
+      resolve(data)
+    })
+  })
+}

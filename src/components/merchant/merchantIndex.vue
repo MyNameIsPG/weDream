@@ -71,6 +71,7 @@ export default {
         pageSize: 10,
         pageNum: 1,
         communityId: sessionStorage.getItem("communityId"),
+        flag: 1
       }
       merchantQueryAll(params).then(data => {
         if (data.data.code == 200) {

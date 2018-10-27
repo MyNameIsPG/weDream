@@ -36,6 +36,9 @@
   }
 </script>
 
-<style scoped>
-
+<style scoped lang="stylus">
+html, body {
+  height: 100% !important;
+  background #fff;
+}
 </style>

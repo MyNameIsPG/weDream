@@ -4,7 +4,8 @@ import { getCookie, setCookie } from '@/util/cookie'
 
 let options = {
   headers: {
-    'Content-Type': 'multipart/form-data'
+    'Content-Type': 'multipart/form-data',
+    "access-token": sessionStorage.getItem("tooken"),
   },
 }
 

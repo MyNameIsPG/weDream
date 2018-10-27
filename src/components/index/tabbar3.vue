@@ -2,11 +2,12 @@
 	<div class="tabbar3">
     <div class="activityIndex">
       <div class="activity-head-box">
-        <img class="headImg" src="../../assets/img/userImg.png" alt="">
+        <img class="headImg" :src="userInfo.headPic" alt="">
         <div class="headText" style="margin-top: 24px;">
-          <h2 style="float: left;">姓名 <img src="../../assets/img/sex_men.png" alt=""></h2>
+          <h2 style="float: left;">{{userInfo.nickname}}  <img v-if="userInfo.sex==1" src="../../assets/img/sex_men.png" alt=""><img v-else-if="2" src="../../assets/img/sex_woman.png" alt=""></h2>
           <div style="float: right;">
-            <span style="color: #ffdf4c;">已认证</span>
+            <span v-if="userInfo.isRealName==1" style="color: #ffdf4c; font-size: 13px;">已认证</span>
+            <span v-else-if="userInfo.isRealName==2" style="color: #999; font-size: 13px;">未认证</span>
             <i style="font-size: 20px; color: #ccc;" class="fa fa-angle-right"></i>
           </div>
         </div>
@@ -34,7 +35,8 @@ export default {
         {"name":"我的活动", url: require('../../assets/img/user/icon2.png') },
         {"name":"我的积分", url: require('../../assets/img/user/icon3.png') },
         {"name":"我的卡券", url: require('../../assets/img/user/icon4.png') },
-      ]
+      ],
+      userInfo: JSON.parse(sessionStorage.getItem("userInfo"))
     }
   },
   mounted: function() {

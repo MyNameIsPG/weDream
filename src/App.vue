@@ -20,6 +20,38 @@ export default {
 
   },
   created() {
+    axiosTokenGet.interceptors.request.use(
+      config => {
+        if (sessionStorage.getItem('tooken')) {
+          config.headers["access-token"] = sessionStorage.getItem('tooken');
+        }
+        return config;
+      },
+      err => {
+        return Promise.reject(err);
+      });
+    axiosToken.interceptors.request.use(
+      config => {
+        if (sessionStorage.getItem('tooken')) {
+          config.headers["access-token"] = sessionStorage.getItem('tooken');
+        }
+        return config;
+      },
+      err => {
+        return Promise.reject(err);
+      });
+    mutipartAxios.interceptors.request.use(
+      config => {
+        if (sessionStorage.getItem('tooken')) {
+          config.headers["access-token"] = sessionStorage.getItem('tooken');
+        }
+        return config;
+      },
+      err => {
+        return Promise.reject(err);
+      });
+
+
     //普通校验
     axiosToken.interceptors.response.use((respone) => {
       let _this = this;
@@ -57,7 +89,7 @@ export default {
 
     })
     //get方法校验
-    axiosTokenGet.interceptors.response.use((respone) => {
+    axiosTokenGet.interceptors.request.use((respone) => {
       var _this = this;
       let source = respone.data;
 

@@ -26,7 +26,6 @@
         <div class="box-foot-tip">{{item.circleName}}</div>
         <div class="box-foot-btns">
           <div class="likeUp">
-
             <img v-if="item.isThumbs==1" src="../../assets/img/likeUps.png" alt="">
             <img v-else @click="isThumbsBtn(item.uuid, index)" src="../../assets/img/likeUp.png" alt="">
             <span v-if="item.thumbs" @click="isThumbsBtn(item.uuid, index)">（{{item.thumbs}}）</span>

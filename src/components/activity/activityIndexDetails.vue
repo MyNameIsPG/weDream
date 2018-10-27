@@ -2,11 +2,11 @@
   <div class="activityIndexDetails">
     <div class="activety">
       <div class="activetyBox" style="background: #ffffff">
-        <img v-if="dataList.coverpic" :src="JSON.parse(dataList.coverpic)[0]" alt="" alt="">
+        <img v-if="dataList.coverpic && JSON.parse(dataList.coverpic)>0" :src="JSON.parse(dataList.coverpic)[0]" alt="" alt="">
         <img v-else src="../../assets/img/banner.png" alt="">
         <h2>{{dataList.name}}</h2>
         <p><span>活动时间：</span>{{dataList.startTime}} 至 {{dataList.endTime}}</p>
-        <p><span>报名时间：</span>{{dataList.joinEndTime}} 至 {{dataList.joinStartTime}}</p>
+        <p><span>报名时间：</span>{{dataList.joinStartTime}} 至 {{dataList.joinEndTime}}</p>
         <p><span>地点：</span>{{dataList.location}}</p>
         <div class="cler">
           <span class="fl">人数：<span style="color: #ffdf4c;"><span v-if="dataList.joinPeople">{{dataList.joinPeople}}</span><span v-else>0</span>/{{dataList.limitPeople}}</span> 人</span>

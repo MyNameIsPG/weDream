@@ -26,6 +26,7 @@
           pageSize: 20,
           communityId: sessionStorage.getItem("communityId"),
           createId: sessionStorage.getItem("createId"),
+          flag: 1
         }
         complaintQuery(params).then(data => {
           if (data.data.code == 200) {

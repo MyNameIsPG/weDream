@@ -20,6 +20,7 @@ import activityIndex from 'src/components/activity/activityIndex';
 import activityIndexDetails from 'src/components/activity/activityIndexDetails';
 
 import circleIndex from 'src/components/circle/circleIndex';
+import circleIndexAll from 'src/components/circle/circleIndexAll';
 import circleIndexAdd from 'src/components/circle/circleIndexAdd';
 import circleIndexAddType from 'src/components/circle/circleIndexAddType';
 import circleIndexDetails from 'src/components/circle/circleIndexDetails';
@@ -66,6 +67,7 @@ const router = new Router({
     { path: '/activityIndex', name: '活动中心', component: activityIndex },
     { path: '/activityIndexDetails', name: '活动详情', component: activityIndexDetails },
     { path: '/circleIndex', name: '邻里圈子', component: circleIndex },
+    { path: '/circleIndexAll', name: '更多圈子', component: circleIndexAll },
     { path: '/circleIndexAdd', name: '发布帖子', component: circleIndexAdd },
     { path: '/circleIndexAddType', name: '选择圈子', component: circleIndexAddType },
     { path: '/circleIndexDetails', name: '帖子详情', component: circleIndexDetails },

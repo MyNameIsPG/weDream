@@ -1,7 +1,11 @@
 <template>
 	<div class="tabbar1">
     <div class="banner">
-      <img src="../../assets/img/banner.png" alt="">
+      <mt-swipe :auto="3000">
+        <mt-swipe-item><img src="../../assets/img/banner.png" alt=""></mt-swipe-item>
+        <mt-swipe-item><img src="../../assets/img/bg/bg2.jpg" alt=""></mt-swipe-item>
+        <mt-swipe-item><img src="../../assets/img/bg/bg3.jpg" alt=""></mt-swipe-item>
+      </mt-swipe>
       <div class="orgName">
         <span>八方小区</span>
       </div>
@@ -37,7 +41,7 @@
       </ul>
     </div>
     <div class="homeList">
-      <h2 class="homeListTitle">社区风采</h2>
+      <h2 class="homeListTitle">红色风采</h2>
       <ul>
         <li v-for="(item,index) in articlesList" :key="index">
           <router-link :to="{path: '/postDetails', query: { uuid: item.uuid }}">
@@ -63,23 +67,26 @@
 
 <script>
 import { Indicator } from 'mint-ui';
+import { Swipe, SwipeItem } from 'mint-ui';
 import noticeList from 'src/components/index/tabbar1/noticeList';
 import { articlesQueryAll } from "src/api/classification/index";
 import { query } from "src/api/activity/index";
-import { gzhLogin } from "src/api/login/index";
+import { getUser } from "src/api/login/index";
 import { noticesQuery } from "src/api/notices/index";
 import friendlyTimeFormat from 'src/util/timeUtils';
 export default {
   name: "tabbar1",
   components: {
-    noticeList
+    noticeList,
+    Swipe,
+    SwipeItem
   },
   data(){
     return {
       dataList: [
         { url: require('../../assets/img/index/icon1.png'), name: '社区党建', link: '/partyIndex' },
         { url: require('../../assets/img/index/icon2.png'), name: '政务咨询', link: '/businessIndex' },
-        { url: require('../../assets/img/index/icon3.png'), name: '活动中心', link: '/activityIndex' },
+        { url: require('../../assets/img/index/icon3.png'), name: '红色集结号', link: '/activityIndex' },
         { url: require('../../assets/img/index/icon4.png'), name: '便捷服务', link: '' },
         { url: require('../../assets/img/index/icon5.png'), name: '邻里圈子', link: '/circleIndex' },
         { url: require('../../assets/img/index/icon6.png'), name: '社区信箱', link: '/complaintIndex' },
@@ -92,34 +99,49 @@ export default {
     }
   },
   mounted(){
-    /*Indicator.open({
-      text: '加载中...',
-      spinnerType: 'fading-circle'
-    });*/
-    if(this.GetRequest().code){
-      let params = {
-        appid: this.GetRequest().appid,
-        openid: this.GetRequest().openid
-      }
-      gzhLogin(params).then(data => {
-        if (data.data.code == 200) {
-          sessionStorage.setItem("appId", data.data.data.appId);
-          sessionStorage.setItem("openId", data.data.data.openId);
-          sessionStorage.setItem("sessionId", data.data.data.sessionId);
-          sessionStorage.setItem("uuid", data.data.data.uuid);
-          sessionStorage.setItem("isRealName", data.data.data.isRealName);
-          sessionStorage.setItem("communityId", data.data.data.communityId);
-          this.circleQuery();
-          this.queryPost();
-          Indicator.close();
-        }
-      })
+    //tooken
+    if(this.GetRequest().t){
+      sessionStorage.setItem("tooken", this.GetRequest().t);
+    }
+    //openid
+    if(this.GetRequest().t){
+      sessionStorage.setItem("openid", this.GetRequest().openid);
+    }
+    //appid
+    if(this.GetRequest().appid){
+      sessionStorage.setItem("appid", this.GetRequest().appid);
     }
 
-
-    this.circleQuery();
-    this.queryPost();
-    this.queryNoticesPost();
+    //调用首页的数据
+    if(!sessionStorage.getItem("isTypeOne")){
+      Indicator.open({
+        text: '页面正在加载中...',
+        spinnerType: 'fading-circle'
+      });
+      var that = this
+      setTimeout(function(){
+        Indicator.close();
+        getUser({}).then(data => {
+          sessionStorage.setItem("userInfo", JSON.stringify(data.data));
+          sessionStorage.setItem("isRealName", data.data.isRealName);
+          sessionStorage.setItem("communityId", data.data.communityId);
+          that.circleQuery();
+          that.queryPost();
+          that.queryNoticesPost();
+          sessionStorage.setItem("isTypeOne", '2');
+        })
+      }, 1000);
+    }else {
+      var that = this
+      getUser({}).then(data => {
+        sessionStorage.setItem("userInfo", JSON.stringify(data.data));
+        sessionStorage.setItem("isRealName", data.data.isRealName);
+        sessionStorage.setItem("communityId", data.data.communityId);
+        that.circleQuery();
+        that.queryPost();
+        that.queryNoticesPost();
+      })
+    }
   },
   methods: {
     GetRequest() {

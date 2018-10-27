@@ -7,6 +7,10 @@
           <img v-else src="" style="border: 1px solid #ccc;" alt="">
           {{item.name}}
         </li>
+        <li @click="pageView('all')">
+          <img src="../../assets/img/quanzi/icon88.png" />
+          更多圈子
+        </li>
       </ul>
     </div>
     <postList :dataList="postQueryData"></postList>
@@ -19,7 +23,7 @@
 <script>
 import { circleQuery } from "src/api/circle/index";
 import { postQuery } from "src/api/circle/index";
-import postList from '@/components/circle/postList';
+import postList from 'src/components/circle/postList';
 export default {
   name: "circleIndex",
   components: {
@@ -65,7 +69,11 @@ export default {
     },
     //跳转到圈子列表
     pageView(obj){
-      this.$router.push({path: '/circlePostIndex', query: { uuid: obj }})
+      if(obj=='all'){
+        this.$router.push({path: '/circleIndexAll'})
+      }else {
+        this.$router.push({path: '/circlePostIndex', query: { uuid: obj }})
+      }
     },
     //发帖
     pageViewAdd(){
