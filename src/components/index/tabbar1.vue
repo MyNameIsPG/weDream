@@ -19,7 +19,7 @@
     </div>
     <noticeList :prizeList="prizeList"></noticeList>
     <div class="homeList">
-      <h2 class="homeListTitle">活动直通车</h2>
+      <h2 class="homeListTitle">红色集结号</h2>
       <ul>
         <li v-for="(item,index) in activityData" :key="index">
           <router-link :to="{path: '/activityIndexDetails', query: { uuid: item.uuid }}">
@@ -41,7 +41,7 @@
       </ul>
     </div>
     <div class="homeList">
-      <h2 class="homeListTitle">红色风采</h2>
+      <h2 class="homeListTitle">社区风采</h2>
       <ul>
         <li v-for="(item,index) in articlesList" :key="index">
           <router-link :to="{path: '/postDetails', query: { uuid: item.uuid }}">
@@ -168,7 +168,8 @@ export default {
         pageNum: 1,
         pageSize: 3,
         communityId: sessionStorage.getItem("communityId"),
-        status: ''
+        status: '',
+        flag: 1
       }
       articlesQueryAll(params).then(data => {
         if (data.data.code == 200) {
@@ -195,7 +196,8 @@ export default {
         pageNum: 1,
         pageSize: 5,
         communityId: sessionStorage.getItem("communityId"),
-        type: 1
+        type: 1,
+        flag: 1
       }
       noticesQuery(params).then(data => {
         if (data.data.code == 200) {

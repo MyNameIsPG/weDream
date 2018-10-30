@@ -83,6 +83,7 @@
       circleQuery(){
         let params = {
           type: 5,
+          flag: 1
         }
         classificationQueryAll(params).then(data => {
           if (data.data.code == 200) {
@@ -96,6 +97,7 @@
         let params = {
           classify: uuid,
           type: 5,
+          flag: 1,
           communityId: sessionStorage.getItem("communityId"),
         }
         articlesQueryAll(params).then(data => {

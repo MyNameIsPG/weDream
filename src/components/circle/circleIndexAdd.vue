@@ -96,7 +96,7 @@ export default {
           content: this.from.content,
           picture: JSON.stringify(this.$refs.upload.dataListdouble),
           circleId: circleUuid,
-          status: 1
+          status: 2
         }
         let that = this
         postAdd(params).then(data => {

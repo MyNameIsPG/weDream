@@ -40,7 +40,7 @@ export default {
     }
   },
   mounted: function() {
-    document.title = this.$route.query.title;
+
   },
   methods: {
     pageView(obj){

@@ -43,7 +43,7 @@ export default {
         pageNum: 1,
         pageSize: 100,
         communityId: sessionStorage.getItem("communityId"),
-        status: 2,
+        status: '2,4',
         circleId: this.$route.query.uuid
       }
       postQuery(params).then(data => {

@@ -59,7 +59,7 @@ export default {
         pageNum: 1,
         pageSize: 100,
         communityId: sessionStorage.getItem("communityId"),
-        status: 4,
+        status: '4,2',
       }
       postQuery(params).then(data => {
         if (data.data.code == 200) {

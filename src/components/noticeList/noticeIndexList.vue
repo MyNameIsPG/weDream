@@ -37,6 +37,7 @@ export default {
           type: 1,
           pageSize: this.pageSize,
           pageNum: this.pageNum,
+          flag: 1,
         }).then((res) => {
           resolve(res);
         }).catch((err) => {

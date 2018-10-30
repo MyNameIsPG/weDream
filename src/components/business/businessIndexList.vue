@@ -28,6 +28,7 @@ export default {
       let params = {
         classify: this.$route.query.uuid,
         type: 3,
+        flag: 1,
         communityId: sessionStorage.getItem("communityId"),
       }
       articlesQueryAll(params).then(data => {

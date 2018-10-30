@@ -43,6 +43,9 @@ import merchantIndexDetails from 'src/components/merchant/merchantIndexDetails';
 import partyIndex from 'src/components/party/partyIndex';
 import partyIndexCore from 'src/components/party/partyIndexCore';
 
+
+import userRealName from 'src/components/index/tabbar3/userRealName';
+
 const router = new Router({
 	routes: [
     { path: '/login', name: '登陆', component: login, children: [
@@ -85,7 +88,7 @@ const router = new Router({
     { path: '/partyIndex', name: '社区党建', component: partyIndex },
     { path: '/partyIndexCore', name: '党员之家', component: partyIndexCore },
 
-
+    { path: '/userRealName', name: '身份认证', component: userRealName },
 
 
 	]

@@ -44,6 +44,7 @@ export default {
         pageNum: 1,
         pageSize: 4,
         type: 1,
+        flag: 1,
         communityId: sessionStorage.getItem("communityId"),
         upId: this.$route.query.uuid
       }
