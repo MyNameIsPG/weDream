@@ -27,6 +27,7 @@ export default {
       let params = {
         type: 1,
         communityId: sessionStorage.getItem("communityId"),
+        flag: 1
       }
       classificationQueryAll(params).then(data => {
         if (data.data.code == 200) {

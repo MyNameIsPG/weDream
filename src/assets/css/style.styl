@@ -161,6 +161,9 @@ html, body {
     color color333
     font-size 12px
     margin 10px 0 5px
+    a {
+      color color333
+    }
     img {
       display block
       width 36px
@@ -600,11 +603,12 @@ html, body {
     width 100%
     color #fefefe
     text-align center
-    padding 20px 0 30px
+    padding 20px 20px 20px
+    display flex
     img {
       width 57px
       height 57px
-      margin 0 auto
+      margin-right: 15px;
       display block
     }
     h2 {
@@ -634,18 +638,20 @@ html, body {
 //固定按钮
 .fixedBtn {
   position fixed
-  right 15px
+  left 50%
   bottom 15px
+  margin-left -25px
   a {
     display inline-block
     width 50px
     height 50px
-    background #ff4c4c
+    background #ffdf4c
     border-radius 50%
     text-align center
     line-height 50px
     color #ffffff
-    font-size 14px
+    font-size 20px
+
   }
 }
 .addBtn {
@@ -845,7 +851,6 @@ html, body {
   li {
     background #ffffff
     padding 10px 0px
-    overflow hidden
     position relative
     border-bottom 1px solid #ccc
     img {
@@ -857,6 +862,7 @@ html, body {
     }
     > div {
       padding-left 70px
+
       h2 {
         color #000000
         font-size 14px
@@ -864,6 +870,7 @@ html, body {
         white-space nowrap
         overflow hidden
         text-overflow ellipsis
+        padding-top 4px
       }
       p {
         height 42px
@@ -981,11 +988,13 @@ html, body {
       > div {
         color #333333
         font-size 14px
+        padding-right 54px
+        line-height 18px
         img {
           vertical-align middle
-          width 18px
-          margin-top -2px
-          margin-right 5px
+          width 15px
+          margin-top -3px
+          margin-right 4px
         }
       }
       .phone {

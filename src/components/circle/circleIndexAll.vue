@@ -35,7 +35,7 @@ export default {
       let params = {
         pageNum: 1,
         pageSize: 100,
-        communityId: sessionStorage.getItem("communityId"),
+        orgid: sessionStorage.getItem("communityId"),
       }
       circleQuery(params).then(data => {
         if (data.data.code == 200) {

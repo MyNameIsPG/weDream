@@ -9,9 +9,9 @@
             <p style="margin-top: 5px; font-size: 12px;">积分：<span v-if="userInfo.integral">{{userInfo.integral}}分</span><span v-else>0分</span></p>
           </div>
           <div style="float: right;">
-            <span v-if="userInfo.isRealName==1" style="color: #ffdf4c; font-size: 13px;">已认证</span>
+            <!--<span v-if="userInfo.isRealName==1" style="color: #ffdf4c; font-size: 13px;">已认证</span>
             <span v-else-if="userInfo.isRealName==2" style="color: #999; font-size: 13px;">未认证</span>
-            <i style="font-size: 20px; color: #ccc;" class="fa fa-angle-right"></i>
+            <i style="font-size: 20px; color: #ccc;" class="fa fa-angle-right"></i>-->
           </div>
         </div>
       </div>
@@ -83,7 +83,8 @@
       circleQuery(){
         let params = {
           type: 5,
-          flag: 1
+          flag: 1,
+          communityId: sessionStorage.getItem("communityId"),
         }
         classificationQueryAll(params).then(data => {
           if (data.data.code == 200) {

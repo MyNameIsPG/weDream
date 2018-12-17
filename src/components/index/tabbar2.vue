@@ -1,5 +1,6 @@
 <template>
-	<div class="tabbar2">
+  <div style="text-align: center; padding: 10px;">正在建设中</div>
+	<!--<div class="tabbar2">
     <ul>
       <li v-for="(item,index) in dataList" :key="index">
         <div>
@@ -10,7 +11,7 @@
         <span @click="addThis()">兑换</span>
       </li>
     </ul>
-  </div>
+  </div>-->
 </template>
 
 <script>

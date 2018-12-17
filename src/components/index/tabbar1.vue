@@ -2,18 +2,21 @@
 	<div class="tabbar1">
     <div class="banner">
       <mt-swipe :auto="3000">
-        <mt-swipe-item><img src="../../assets/img/banner.png" alt=""></mt-swipe-item>
-        <mt-swipe-item><img src="../../assets/img/bg/bg2.jpg" alt=""></mt-swipe-item>
-        <mt-swipe-item><img src="../../assets/img/bg/bg3.jpg" alt=""></mt-swipe-item>
+        <mt-swipe-item v-for="(item,index) in picturesQueryDataList" :key="index"><img :src="item.url" alt=""></mt-swipe-item>
       </mt-swipe>
-      <div class="orgName">
-        <span>八方小区</span>
+      <div class="orgName" v-if="communityName">
+        <span>{{communityName}}</span>
       </div>
     </div>
     <div class="iconList">
       <ul>
-        <li v-for="(item,index) in dataList" :key="index" @click="pageView(item.link)">
-          <img :src="item.url" alt=""> {{item.name}}
+        <li v-for="(item,index) in dataList" :key="index" >
+          <a href="javascript:void(0)" v-if="item.type==1" @click="pageView(item.link, item.type)">
+            <img :src="item.url" alt=""> {{item.name}}
+          </a>
+          <a :href="item.link" v-else>
+            <img :src="item.url" alt=""> {{item.name}}
+          </a>
         </li>
       </ul>
     </div>
@@ -24,7 +27,7 @@
         <li v-for="(item,index) in activityData" :key="index">
           <router-link :to="{path: '/activityIndexDetails', query: { uuid: item.uuid }}">
             <div class="homeListImg">
-              <img v-if="item.coverpicList && item.coverpicList>0" :src="item.coverpicList[0]" alt="">
+              <img v-if="item.coverpicList && item.coverpicList.length>0" :src="item.coverpicList[0]" alt="">
               <img v-else src="../../assets/img/banner.png" alt="">
             </div>
             <h2 class="homeListName">{{item.name}}</h2>
@@ -73,6 +76,7 @@ import { articlesQueryAll } from "src/api/classification/index";
 import { query } from "src/api/activity/index";
 import { getUser } from "src/api/login/index";
 import { noticesQuery } from "src/api/notices/index";
+import { picturesQuery } from "src/api/pictures/index";
 import friendlyTimeFormat from 'src/util/timeUtils';
 export default {
   name: "tabbar1",
@@ -84,18 +88,20 @@ export default {
   data(){
     return {
       dataList: [
-        { url: require('../../assets/img/index/icon1.png'), name: '社区党建', link: '/partyIndex' },
-        { url: require('../../assets/img/index/icon2.png'), name: '政务咨询', link: '/businessIndex' },
-        { url: require('../../assets/img/index/icon3.png'), name: '红色集结号', link: '/activityIndex' },
-        { url: require('../../assets/img/index/icon4.png'), name: '便捷服务', link: '' },
-        { url: require('../../assets/img/index/icon5.png'), name: '邻里圈子', link: '/circleIndex' },
-        { url: require('../../assets/img/index/icon6.png'), name: '社区信箱', link: '/complaintIndex' },
-        { url: require('../../assets/img/index/icon7.png'), name: '社区网格', link: '/gridIndex' },
-        { url: require('../../assets/img/index/icon8.png'), name: '社区直达', link: '/merchantIndex' },
+        { url: require('../../assets/img/index/icon1.png'), name: '社区党建', link: '/partyIndexCore', type: 1 },
+        { url: require('../../assets/img/index/icon2.png'), name: '政务咨询', link: '/businessIndex', type: 1 },
+        { url: require('../../assets/img/index/icon3.png'), name: '红色集结号', link: '/activityIndex', type: 1 },
+        { url: require('../../assets/img/index/icon4.png'), name: '便捷服务', link: 'https://mp.weixin.qq.com/cityservice/index?cssource=1&csentrance=5&sharefrom=appmessage&from=singlemessage&isappinstalled=0', type: 2 },
+        { url: require('../../assets/img/index/icon5.png'), name: '邻里圈子', link: '/circleIndex', type: 1 },
+        { url: require('../../assets/img/index/icon6.png'), name: '社区信箱', link: '/complaintIndex', type: 1 },
+        { url: require('../../assets/img/index/icon7.png'), name: '社区网格', link: '/gridIndex', type: 1 },
+        { url: require('../../assets/img/index/icon8.png'), name: '社区直达', link: '/merchantIndex', type: 1 },
       ],
       articlesList: {},
       activityData: {},
-      prizeList: {}
+      prizeList: {},
+      picturesQueryDataList: {},
+      communityName: "",
     }
   },
   mounted(){
@@ -122,24 +128,32 @@ export default {
       setTimeout(function(){
         Indicator.close();
         getUser({}).then(data => {
+          that.communityName = data.data.communityName
           sessionStorage.setItem("userInfo", JSON.stringify(data.data));
           sessionStorage.setItem("isRealName", data.data.isRealName);
           sessionStorage.setItem("communityId", data.data.communityId);
+          sessionStorage.setItem("createId", data.data.uuid);
+          sessionStorage.setItem("mobile", data.data.mobile);
           that.circleQuery();
           that.queryPost();
           that.queryNoticesPost();
+          that.picturesQueryPost();
           sessionStorage.setItem("isTypeOne", '2');
         })
       }, 1000);
     }else {
       var that = this
       getUser({}).then(data => {
+        that.communityName = data.data.communityName
         sessionStorage.setItem("userInfo", JSON.stringify(data.data));
         sessionStorage.setItem("isRealName", data.data.isRealName);
         sessionStorage.setItem("communityId", data.data.communityId);
+        sessionStorage.setItem("createId", data.data.uuid);
+        sessionStorage.setItem("mobile", data.data.mobile);
         that.circleQuery();
         that.queryPost();
         that.queryNoticesPost();
+        that.picturesQueryPost();
       })
     }
   },
@@ -157,18 +171,38 @@ export default {
       }
       return theRequest;
     },
-    pageView(obj){
+    pageView(obj,type){
       if(obj!=''){
-        this.$router.push({path: obj})
+        if(type==1){
+          this.$router.push({path: obj})
+        }else {
+          window.location.href = obj
+        }
+
       }
     },
-    //分页查询圈子
+    //分页查询轮播图
+    picturesQueryPost(){
+      let params = {
+        pageNum: 1,
+        pageSize: 10,
+        communityId: sessionStorage.getItem("communityId"),
+        flag: 1
+      }
+      picturesQuery(params).then(data => {
+        if (data.data.code == 200) {
+          this.picturesQueryDataList = data.data.data.list
+        }
+      })
+    },
+    //分页查询文章
     circleQuery(){
       let params = {
         pageNum: 1,
         pageSize: 3,
+        type: 4,
+        flag: 1,
         communityId: sessionStorage.getItem("communityId"),
-        status: '',
         flag: 1
       }
       articlesQueryAll(params).then(data => {

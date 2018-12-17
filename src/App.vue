@@ -65,7 +65,7 @@ export default {
           cancelButtonText:"再浏览下"
         }).then(action => {
           if(action == 'confirm'){
-            _this.$router.push({ path:'/login'})
+            //_this.$router.push({ path:'/login'})
           }else{
             console.log('否')
           }
@@ -78,7 +78,7 @@ export default {
           confirmButtonText:"确认",
         }).then(action => {
           if(action == 'confirm'){
-            _this.$router.push({ path:'/login'})
+            //_this.$router.push({ path:'/login'})
           }else{
             console.log('否')
           }

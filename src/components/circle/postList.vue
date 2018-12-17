@@ -10,17 +10,17 @@
       <div class="box-body" @click="pageView(item.uuid)" v-if="item.picture!=''">
         <div class="box-body-img" v-if="JSON.parse(item.picture).length==1&&JSON.parse(item.picture).length<=2">
           <img :src="JSON.parse(item.picture)[0]" alt="">
-          <p class="box-body-text">{{item.content}}</p>
+          <p class="box-body-text">{{item.title}}</p>
         </div>
         <div v-else>
-          <p class="box-body-text">{{item.content}}</p>
+          <p class="box-body-text">{{item.title}}</p>
           <div class="box-body-imgs">
-            <img v-for="(items,indexs) in JSON.parse(item.picture)" :key="indexs" v-if="index>3" :src="items" alt="">
+            <img v-for="(items,indexs) in JSON.parse(item.picture)" :key="indexs" v-if="indexs<=2" :src="items" alt="">
           </div>
         </div>
       </div>
       <div class="box-body" @click="pageView(item.uuid)" v-else>
-        <p class="box-body-text">{{item.content}}</p>
+        <p class="box-body-text">{{item.title}}</p>
       </div>
       <div class="box-foot">
         <div class="box-foot-tip">{{item.circleName}}</div>

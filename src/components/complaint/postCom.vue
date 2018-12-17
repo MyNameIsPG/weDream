@@ -10,7 +10,7 @@
       </div>
       <div class="box-body" @click="pageView(item.uuid)">
         <p class="box-body-text">{{item.content}}</p>
-        <img v-if="JSON.parse(item.files)" :src="JSON.parse(item.files)[0]" alt="" style="width: 100%">
+        <img v-if="JSON.parse(item.files)" :src="JSON.parse(item.files)[0]" alt="" style="width: 100%; max-height: 200px;">
       </div>
     </div>
   </div>

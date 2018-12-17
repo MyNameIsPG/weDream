@@ -1,14 +1,17 @@
 <template>
   <div class="circlePostIndex">
     <div class="infosBox">
-        <img src="../../assets/img/circleLogo.png" alt="">
-        <h2>{{postCircleQueryOneData.name}}</h2>
-      <p>成员：1  |  帖子：12</p>
-      <a href="javascript:void(0);" class="bansA">加入</a>
+        <div>
+          <img src="../../assets/img/circleLogo.png" alt="">
+        </div>
+        <div>
+          <h2>{{postCircleQueryOneData.name}}</h2>
+          <!--<p>成员：1  |  帖子：12</p>-->
+        </div>
     </div>
     <postList style="background: #ffffff;" :dataList="postQueryData"></postList>
     <div class="fixedBtn">
-      <a @click="pageViewAdd()" href="javascript:void(0);">发帖</a>
+      <a @click="pageViewAdd()" href="javascript:void(0);"><i class="fa fa-plus"></i></a>
     </div>
   </div>
 </template>
@@ -39,12 +42,13 @@ export default {
     },
     //分页查询帖子
     postQuery(){
+      var uuid = this.$route.query.uuid
       let params = {
         pageNum: 1,
         pageSize: 100,
         communityId: sessionStorage.getItem("communityId"),
         status: '2,4',
-        circleId: this.$route.query.uuid
+        circleId: uuid
       }
       postQuery(params).then(data => {
         if (data.data.code == 200) {

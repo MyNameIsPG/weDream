@@ -17,8 +17,8 @@
     <div class="complaintDetailsReply" v-if="commentDataList.length>0">
       <h2>回复内容</h2>
       <div>
-        <p style="text-align: right; color: #888; margin: 10px 0 5px;">2018-7-18 10:00</p>
-        <p>尊敬的先生/女士：您好！您反映的乒乓球场地问题，我街道已联系相关社区，现已纳入社区整体规划。感谢您的关注！祝您生活愉快！</p>
+        <p style="text-align: right; color: #888; margin: 10px 0 5px;">{{commentDataList[0].createTime}}</p>
+        <p>{{commentDataList[0].content}}</p>
       </div>
     </div>
   </div>
@@ -58,7 +58,7 @@
         }
         complaintCommentQueryAll(params).then(data => {
           if (data.data.code == 200) {
-            this.commentDataList = data.data.data
+            this.commentDataList = data.data.data.list
           }
         })
       },

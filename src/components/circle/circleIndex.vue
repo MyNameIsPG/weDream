@@ -15,7 +15,7 @@
     </div>
     <postList :dataList="postQueryData"></postList>
     <div class="fixedBtn">
-      <a @click="pageViewAdd()" href="javascript:void(0);">发帖</a>
+      <a @click="pageViewAdd()" href="javascript:void(0);"><i class="fa fa-plus"></i></a>
     </div>
   </div>
 </template>
@@ -45,7 +45,7 @@ export default {
       let params = {
         pageNum: 1,
         pageSize: 7,
-        communityId: sessionStorage.getItem("communityId"),
+        orgid: sessionStorage.getItem("communityId"),
       }
       circleQuery(params).then(data => {
         if (data.data.code == 200) {

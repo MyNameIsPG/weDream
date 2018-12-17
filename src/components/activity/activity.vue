@@ -2,7 +2,7 @@
 	<div class="activety">
     <div v-if="dataList && dataList.length>0">
       <div class="activetyBox" v-for="(item,index) in dataList" :key="index" @click="pageView(item.uuid)">
-        <img v-if="item.coverpicList && item.coverpicList.length>0" :src="item.coverpicList[0]" alt="">
+        <img v-if="item.coverpic && JSON.parse(item.coverpic).length>0" :src="JSON.parse(item.coverpic)[0]" alt="">
         <img v-else src="../../assets/img/banner.png" alt="">
         <h2>{{item.name}}</h2>
         <p><span>时间：</span>{{item.startTime}} 至 {{item.endTime}}</p>

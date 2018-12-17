@@ -45,6 +45,8 @@ import partyIndexCore from 'src/components/party/partyIndexCore';
 
 
 import userRealName from 'src/components/index/tabbar3/userRealName';
+import myActive from 'src/components/index/tabbar3/myActive';
+
 
 const router = new Router({
 	routes: [
@@ -87,8 +89,8 @@ const router = new Router({
     { path: '/merchantIndexDetails', name: '社区直达', component: merchantIndexDetails },
     { path: '/partyIndex', name: '社区党建', component: partyIndex },
     { path: '/partyIndexCore', name: '党员之家', component: partyIndexCore },
-
     { path: '/userRealName', name: '身份认证', component: userRealName },
+    { path: '/myActive', name: '我的活动', component: myActive },
 
 
 	]

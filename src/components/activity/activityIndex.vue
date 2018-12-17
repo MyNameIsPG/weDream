@@ -4,7 +4,7 @@
       <ul>
         <li @click="optionBtn(1)" :class="{ 'active' : 1 == activeIndex}">组织动态</li>
         <li @click="optionBtn(2)" :class="{ 'active' : 2 == activeIndex}">红色风采</li>
-        <li @click="optionBtn(3)" :class="{ 'active' : 3 == activeIndex}">我的导航</li>
+        <li @click="optionBtn(3)" :class="{ 'active' : 3 == activeIndex}">我的活动</li>
       </ul>
       <div>
         <activity v-if="activeIndex==1||activeIndex==3" :dataList="dataList"></activity>

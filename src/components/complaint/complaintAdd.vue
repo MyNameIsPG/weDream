@@ -74,6 +74,7 @@
             communityId: sessionStorage.getItem("communityId"),
           }
           let that = this
+          debugger
           complaintAdd(params).then(data => {
             if (data.data.code == 200) {
               let instance = Toast('上传成功，请等待返回');

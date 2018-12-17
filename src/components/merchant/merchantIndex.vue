@@ -21,7 +21,7 @@
             <a :href="'tel:'+item.phone"><img class="phone" src="../../assets/img/shangjia/phone.png" alt=""></a>
           </div>
         </div>
-        <div class="tabbar2" style="padding: 10px 10px 5px 10px;">
+        <!--<div class="tabbar2" style="padding: 10px 10px 5px 10px;">
           <ul>
             <li>
               <div>
@@ -32,7 +32,7 @@
               <span @click="addThis()">领取</span>
             </li>
           </ul>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
