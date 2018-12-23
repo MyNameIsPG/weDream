@@ -69,7 +69,6 @@
       },
       //报名
       joinActBtn(flag) {
-        alert(sessionStorage.getItem("mobile"))
         if(!sessionStorage.getItem("mobile")){
           let _this = this;
           this.$messagebox({
@@ -103,9 +102,8 @@
                     let instance = Toast('报名成功！感谢您的参与。');
                     setTimeout(() => {
                       instance.close();
-                      this.queryPost();
-                      this.queryActPeoplePost();
-                    }, 2000);
+                      window.location.reload()
+                    }, 100);
                   }
                 })
               }else{
